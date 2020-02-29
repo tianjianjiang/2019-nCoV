@@ -235,7 +235,7 @@ var raster = new ol.layer.VectorTile({
         (type == 'Marine area' && marine) ||
         type.indexOf('City') == 0 ||
         (type.indexOf('Water area') == 0 && feature.getGeometry().getType() != 'Point')) {
-      styles[0].getText().setText(feature.get('_name_' + language.value));
+      styles[0].getText().setText(feature.get('_name_' + $.i18n().locale));
       return styles;
     }
   },
