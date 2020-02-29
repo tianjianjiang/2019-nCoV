@@ -193,6 +193,7 @@ var appView = new ol.View({
 // var raster = new ol.layer.Tile({
 //   source: new ol.source.OSM()
 // });
+var res10;
 var raster = new ol.layer.VectorTile({
   source: new ol.source.VectorTile({
     format: new ol.format.MVT(),
@@ -247,6 +248,7 @@ var map = new ol.Map({
   target: 'map',
   view: appView
 });
+res10 = map.getView().getResolutionForZoom(7);
 
 var lastFeature = false;
 map.addControl(sidebar);
