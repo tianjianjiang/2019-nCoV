@@ -475,7 +475,6 @@ geolocation.on('change:position', function() { // when we get a position update,
   var coordinate = geolocation.getPosition();
   console.log(coordinate);
   appView.setCenter(coordinate);
-  trackFeature.getGeometry().appendCoordinate(coordinate);
 });
 var marker = new ol.Overlay({ // put a marker at our current position
   element: document.getElementById('location'),
