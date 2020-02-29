@@ -195,7 +195,7 @@ var raster = new ol.layer.Tile({
 });
 
 var fill = new ol.style.Fill({
-  color: 'rgba(255,255,255,0.4)'
+  color: 'rgba(255,255,255,0.0)'
 });
 var stroke = new ol.style.Stroke({
   color: '#3399CC',
@@ -205,20 +205,20 @@ var styles = [
   new ol.style.Style({
     image: new ol.style.Circle({
       fill: new ol.style.Fill({
-        color: 'rgba(0,0,0,0.2)'
+        color: 'rgba(0,0,0,0.3)'
       }),
       stroke: new ol.style.Stroke({
         color: 'black',
         width: 1.25
       }),
-      radius: 3
+      radius: 4
     }),
     fill: fill,
     stroke: stroke,
     text: new ol.style.Text({
       font: '18px Calibri,sans-serif',
       textBaseline: 'top',
-      offsetY: 4
+      offsetY: 8
     })
   })
 ];
@@ -525,16 +525,24 @@ geolocation.on('change:position', function() { // when we get a position update,
   var coordinate = geolocation.getPosition();
   console.log(coordinate);
   appView.setCenter(ol.proj.fromLonLat(coordinate));
-  
+
   var marker = new ol.layer.Vector({ // put a marker at our current position
     source: new ol.source.Vector({
       features: [
         new ol.Feature({
           geometry: new ol.geom.Point(ol.proj.fromLonLat(coordinate)),
-          color: 'blue'
+          name: 'Current location'
         })
       ]
-    })
+    }),
+    style: new ol.style.Style({
+      image: new ol.style.Icon({
+        anchor: [0.5, 46],
+        anchorXUnits: 'fraction',
+        anchorYUnits: 'pixels',
+        src: 'https://openlayers.org/en/latest/examples/data/icon.png'
+      })
+    })      
   });
   map.addLayer(marker);
 });
