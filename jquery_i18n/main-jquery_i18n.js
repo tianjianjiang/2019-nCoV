@@ -1,10 +1,8 @@
-$.i18n().load({
-  en: 'i18n/en.json'
-})
-
 jQuery(document).ready(function() {
   var update_texts = function() { $('body').i18n() };
-  $.i18n().load({...});
+  $.i18n().load({
+    en: 'i18n/en.json'
+  });
   update_texts();
 });
 
