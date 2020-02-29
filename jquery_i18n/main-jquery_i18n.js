@@ -1,7 +1,7 @@
 jQuery(document).ready(function() {
   var update_texts = function() { $('body').i18n() };
   $.i18n().load({
-    en: 'i18n/en.json'
+    en: './data/en.json'
   });
   update_texts();
 
