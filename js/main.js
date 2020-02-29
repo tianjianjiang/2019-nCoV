@@ -190,9 +190,9 @@ var appView = new ol.View({
   zoom: 7
 });
 
-// var raster = new ol.layer.Tile({
-//   source: new ol.source.OSM()
-// });
+var raster = new ol.layer.Tile({
+  source: new ol.source.OSM()
+});
 
 var fill = new ol.style.Fill({
   color: 'rgba(255,255,255,0.0)'
@@ -223,7 +223,7 @@ var styles = [
   })
 ];
 var res10;
-var raster = new ol.layer.VectorTile({
+var i18nCaption = new ol.layer.VectorTile({
   source: new ol.source.VectorTile({
     format: new ol.format.MVT(),
     url: 'https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/{z}/{y}/{x}.pbf',
@@ -273,7 +273,7 @@ var points = new ol.layer.Vector({
   style: getPointStyle
 });
 var map = new ol.Map({
-  layers: [raster, china, taiwan, points],
+  layers: [raster, i18nCaption, china, taiwan, points],
   target: 'map',
   view: appView
 });
@@ -533,5 +533,5 @@ var marker = new ol.Overlay({ // put a marker at our current position
 map.addOverlay(marker);
 
 $('.lang-switch').click(function(e) {
-  map.getLayers().item(0).getSource().refresh();
+  map.getLayers().item(1).getSource().refresh();
 });
