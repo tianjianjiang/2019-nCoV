@@ -542,5 +542,3 @@ geolocation.on('change:position', function() { // when we get a position update,
 $('.lang-switch').click(function(e) {
   map.getLayers().item(1).getSource().refresh();
 });
-
-    source: new ol.source.Vector(
