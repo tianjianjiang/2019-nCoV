@@ -4,9 +4,29 @@ var jsonFiles, filesLength, fileKey = 0;
 
 var geolocation = new ol.Geolocation();
 geolocation.setTracking(true); // here the browser may ask for confirmation
-geolocation.on('change:position', function() {
-  console.log(geolocation.getPosition());
+geolocation.bindTo('projection', view); // bind the view's projection
+geolocation.on('change:position', function() { // when we get a position update, add the coordinate to the track's geometry and recenter the view
+  var coordinate = geolocation.getPosition();
+  console.log(coordinate);
+  view.setCenter(coordinate);
+  trackFeature.getGeometry().appendCoordinate(coordinate);
 });
+      
+var marker = new ol.Overlay({ // put a marker at our current position
+  element: document.getElementById('location'),
+  positioning: 'center-center'
+});
+map.addOverlay(marker);
+marker.bindTo('position', geolocation);
+
+var deviceOrientation = new ol.DeviceOrientation({ // rotate the view to match the device orientation
+  tracking: true
+});
+deviceOrientation.on('change:heading', onChangeHeading);
+function onChangeHeading(event) {
+  var heading = event.target.getHeading();
+  view.setRotation(-heading);
+}
 
 // var projection = ol.proj.get('EPSG:3857');
 // var projectionExtent = projection.getExtent();
