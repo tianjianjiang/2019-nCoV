@@ -193,6 +193,35 @@ var appView = new ol.View({
 // var raster = new ol.layer.Tile({
 //   source: new ol.source.OSM()
 // });
+
+var fill = new ol.style.Fill({
+  color: 'rgba(255,255,255,0.4)'
+});
+var stroke = new ol.style.Stroke({
+  color: '#3399CC',
+  width: 1.25
+});
+var styles = [
+  new ol.style.Style({
+    image: new ol.style.Circle({
+      fill: new ol.style.Fill({
+        color: 'rgba(0,0,0,0.2)'
+      }),
+      stroke: new ol.style.Stroke({
+        color: 'black',
+        width: 1.25
+      }),
+      radius: 5
+    }),
+    fill: fill,
+    stroke: stroke,
+    text: new ol.style.Text({
+      font: '18px Calibri,sans-serif',
+      textBaseline: 'top',
+      offsetY: 4
+    })
+  })
+];
 var res10;
 var raster = new ol.layer.VectorTile({
   source: new ol.source.VectorTile({
