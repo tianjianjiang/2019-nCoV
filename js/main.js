@@ -481,7 +481,6 @@ var marker = new ol.Overlay({ // put a marker at our current position
   positioning: 'center-center'
 });
 map.addOverlay(marker);
-marker.bindTo('position', geolocation);
 
 var deviceOrientation = new ol.DeviceOrientation({ // rotate the view to match the device orientation
   tracking: true
