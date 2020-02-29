@@ -525,9 +525,17 @@ geolocation.on('change:position', function() { // when we get a position update,
   var coordinate = geolocation.getPosition();
   console.log(coordinate);
   appView.setCenter(ol.proj.fromLonLat(coordinate));
-  var markers = new ol.Layer.Markers("Markers");
-  map.addLayer(markers);
-  markers.addMarker(new ol.Marker(coordinate)); // put a marker at our current position
+  
+  var marker = new ol.layer.Vector({ // put a marker at our current position
+    source: new ol.source.Vector({
+      features: [
+        new ol.Feature({
+          geometry: new ol.geom.Point(ol.proj.fromLonLat(coordinate))
+        })
+      ]
+    })
+  });
+  map.addLayer(marker);
 });
 
 $('.lang-switch').click(function(e) {
