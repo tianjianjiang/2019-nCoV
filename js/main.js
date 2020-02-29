@@ -195,7 +195,7 @@ var appView = new ol.View({
 // });
 
 var fill = new ol.style.Fill({
-  color: 'rgba(255,255,255,0.4)'
+  color: 'rgba(255,255,255,0.0)'
 });
 var stroke = new ol.style.Stroke({
   color: '#3399CC',
