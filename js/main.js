@@ -2,9 +2,15 @@
 var sidebar = new ol.control.Sidebar({ element: 'sidebar', position: 'right' });
 var jsonFiles, filesLength, fileKey = 0;
 
-var projection = ol.proj.get('EPSG:3857');
-var projectionExtent = projection.getExtent();
-var size = ol.extent.getWidth(projectionExtent) / 256;
+var geolocation = new ol.Geolocation();
+geolocation.setTracking(true); // here the browser may ask for confirmation
+geolocation.on('change:position', function() {
+  console.log(geolocation.getPosition());
+});
+
+// var projection = ol.proj.get('EPSG:3857');
+// var projectionExtent = projection.getExtent();
+// var size = ol.extent.getWidth(projectionExtent) / 256;
 var resolutions = new Array(20);
 var matrixIds = new Array(20);
 for (var z = 0; z < 20; ++z) {
