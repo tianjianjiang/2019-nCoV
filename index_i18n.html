@@ -141,7 +141,13 @@
     <div id="map" class="sidebar-map"></div>
     <footer>
         <div id="footer">
-            <p>確診 Confirmed <span id="Confirmed" class="count"></span> / 死亡 Deaths <span id="Deaths" class="count"></span> / 治癒 Recovered <span id="Recovered" class="count"></span></p>
+            <p>
+                <span id="Confirmed" class="count" data-i18n="confirmed">確診 Confirmed</span>
+                /
+                <span id="Deaths" class="count" data-i18n="deceased">死亡 Deceased</span>
+                /
+                <span id="Recovered" class="count" data-i18n="recovered">治癒 Recovered</span>
+            </p>
         </div>
     </footer>
     <script src="js/jquery.min.js" type="text/javascript"></script>
