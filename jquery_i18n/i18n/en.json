@@ -9,7 +9,7 @@
 		"locale": "en",
 		"message-documentation": "qqq",
 		"AnotherMetadata": "AnotherMedatadataValue",
-		"og-title": "COVID-19 Map"
+		"og:title": "COVID-19 Map"
 	},
 	"title": "COVID-19 Map",
 	"confirmed": "Confirmed",
