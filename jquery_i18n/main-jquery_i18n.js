@@ -4,11 +4,11 @@ jQuery(document).ready(function() {
     en: 'i18n/en.json'
   });
   update_texts();
-});
 
-$('.lang-switch').click(function(e) {
-  e.preventDefault();
-  $.i18n().locale = $(this).data('locale');
-  update_texts();
+  $('.lang-switch').click(function(e) {
+    e.preventDefault();
+    $.i18n().locale = $(this).data('locale');
+    update_texts();
+  });
 });
 
