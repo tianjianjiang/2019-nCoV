@@ -481,13 +481,3 @@ var marker = new ol.Overlay({ // put a marker at our current position
   positioning: 'center-center'
 });
 map.addOverlay(marker);
-
-var deviceOrientation = new ol.DeviceOrientation({ // rotate the view to match the device orientation
-  tracking: true
-});
-deviceOrientation.on('change:heading', onChangeHeading);
-function onChangeHeading(event) {
-  var heading = event.target.getHeading();
-  view.setRotation(-heading);
-}
-
