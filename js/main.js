@@ -525,12 +525,10 @@ geolocation.on('change:position', function() { // when we get a position update,
   var coordinate = geolocation.getPosition();
   console.log(coordinate);
   appView.setCenter(ol.proj.fromLonLat(coordinate));
+  var markers = new ol.Layer.Markers("Markers");
+  map.addLayer(markers);
+  markers.addMarker(new ol.Marker(coordinate)); // put a marker at our current position
 });
-var marker = new ol.Overlay({ // put a marker at our current position
-  element: document.getElementById('location'),
-  positioning: 'center-center'
-});
-map.addOverlay(marker);
 
 $('.lang-switch').click(function(e) {
   map.getLayers().item(1).getSource().refresh();
