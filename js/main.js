@@ -474,7 +474,7 @@ geolocation.setTracking(true); // here the browser may ask for confirmation
 geolocation.on('change:position', function() { // when we get a position update, add the coordinate to the track's geometry and recenter the view
   var coordinate = geolocation.getPosition();
   console.log(coordinate);
-  appView.setCenter(coordinate);
+  appView.setCenter(ol.proj.fromLonLat(coordinate));
 });
 var marker = new ol.Overlay({ // put a marker at our current position
   element: document.getElementById('location'),
