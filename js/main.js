@@ -195,7 +195,7 @@ var raster = new ol.layer.Tile({
 });
 
 var fill = new ol.style.Fill({
-  color: 'rgba(255,255,255,0.0)'
+  color: 'rgba(255,255,255,0.4)'
 });
 var stroke = new ol.style.Stroke({
   color: '#3399CC',
@@ -211,7 +211,7 @@ var styles = [
         color: 'black',
         width: 1.25
       }),
-      radius: 5
+      radius: 3
     }),
     fill: fill,
     stroke: stroke,
@@ -530,7 +530,8 @@ geolocation.on('change:position', function() { // when we get a position update,
     source: new ol.source.Vector({
       features: [
         new ol.Feature({
-          geometry: new ol.geom.Point(ol.proj.fromLonLat(coordinate))
+          geometry: new ol.geom.Point(ol.proj.fromLonLat(coordinate)),
+          color: 'blue'
         })
       ]
     })
@@ -541,3 +542,5 @@ geolocation.on('change:position', function() { // when we get a position update,
 $('.lang-switch').click(function(e) {
   map.getLayers().item(1).getSource().refresh();
 });
+
+    source: new ol.source.Vector(
