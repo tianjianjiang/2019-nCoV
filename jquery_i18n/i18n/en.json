@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alice",
+			"David",
+			"Santhosh"
+		],
+		"last-updated": "2020-02-29",
+		"locale": "en",
+		"message-documentation": "qqq",
+		"AnotherMetadata": "AnotherMedatadataValue"
+	},
+	"title": "COVID-19 Map",
+	"appname-sub-title": "An example application with jquery.i18n",
+	"appname-header-introduction": "Introduction",
+	"appname-about": "About this application",
+	"appname-footer": "Footer text"
+}
+
