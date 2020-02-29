@@ -471,7 +471,6 @@ var content = document.getElementById('sidebarContent');
 
 var geolocation = new ol.Geolocation();
 geolocation.setTracking(true); // here the browser may ask for confirmation
-geolocation.bindTo('projection', appView); // bind the view's projection
 geolocation.on('change:position', function() { // when we get a position update, add the coordinate to the track's geometry and recenter the view
   var coordinate = geolocation.getPosition();
   console.log(coordinate);
