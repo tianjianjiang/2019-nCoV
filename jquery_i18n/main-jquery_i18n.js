@@ -1,7 +1,7 @@
 jQuery(document).ready(function() {
   var update_texts = function() { $('body').i18n() };
   $.i18n().load({
-    en: '/2019-nCoV/jquery_i18n/data/en.json'
+    en: 'jquery_i18n/data/en.json'
   });
   update_texts();
 
