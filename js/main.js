@@ -190,9 +190,28 @@ var appView = new ol.View({
   zoom: 7
 });
 
-var raster = new ol.layer.Tile({
-  source: new ol.source.OSM()
+// var raster = new ol.layer.Tile({
+//   source: new ol.source.OSM()
+// });
+var raster = new ol.layer.VectorTile({
+  source: new ol.source.VectorTile({
+    format: new ol.format.MVT(),
+    url: 'https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/{z}/{y}/{x}.pbf',
+  }),
+  style: function(feature, resolution) {
+    var type = feature.get('layer');
+    var marine = (resolution < res10);
+    if ((type == 'Coastline' && !marine) ||
+        (type == 'Marine area' && marine) ||
+        type.indexOf('City') == 0 ||
+        (type.indexOf('Water area') == 0 && feature.getGeometry().getType() != 'Point')) {
+      styles[0].getText().setText(feature.get('_name_' + language.value));
+      return styles;
+    }
+  },
+  declutter : true
 });
+
 var sourcePool = {};
 
 sourcePool['1'] = new ol.source.Vector({
@@ -481,3 +500,7 @@ var marker = new ol.Overlay({ // put a marker at our current position
   positioning: 'center-center'
 });
 map.addOverlay(marker);
+
+$('.lang-switch').click(function(e) {
+  map.getLayers().item(0).getSource().refresh();
+});
